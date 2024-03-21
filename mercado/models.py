@@ -40,8 +40,12 @@ class Item(db.Model):
     def __repr__(self):
         return f"Item {self.nome}"
     
-
+"""
+para fazer um filtro e selecionar algum elemento 
+User.query.filter_by(usuario='fulano').first().id
+"""
 class User(db.Model):
+    
     id = db.Column(db.Integer, primary_key=True)
     usuario = db.Column(db.String(length=30), nullable=False, unique=True)
     email = db.Column(db.String(length=50), nullable=False, unique=True)
