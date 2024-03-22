@@ -1,5 +1,5 @@
 from mercado import db
-
+from mercado import bcrypt
 """
 para executar o codigo em modo debug
 execute a linha de codigo no terminal:
@@ -52,3 +52,11 @@ class User(db.Model):
     senha = db.Column(db.String(length=60), nullable=False, unique=True)
     valor = db.Column(db.Integer, nullable=False, default=5000)
     itens = db.relationship('Item', backref="dono_user", lazy=True)
+    
+    @property
+    def senhacript(self):
+        return self.senhacript
+    
+    @senhacript.setter
+    def senhacript(self, senha_texto):
+        self.senha = bcrypt.generate_password_hash(senha_texto).decode('utf-8')
