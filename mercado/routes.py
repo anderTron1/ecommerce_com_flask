@@ -33,6 +33,6 @@ def page_cadastro():
         
     if form.errors != {}:
         for err in form.errors.values():
-            flash(f"erro ao cadastrar usuario: {err}", category="danger")
+            flash(f"erro ao cadastrar usuario: {err[0]}", category="danger")
             
     return render_template("cadastro.html", form=form)
